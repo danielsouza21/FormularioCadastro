@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 <h4 align="center">
-    <img alt="ToDoGif" title="ToDoReactJSf" src="./src/assets/demonstração.gif" width="750px" />
+    <img alt="ToDoGif" title="ToDoReactJSf" src="./src/assets/demonstração.png" width="400px" />
 </h4>
 
 ## Itens estudados
