@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 <h4 align="center">
-    <img alt="Forms" title="Forms" src="./src/assets/Demonstração.png" width="750px" />
+    <img alt="Forms" title="Forms" src="./public/Demonstração.png" width="750px" />
 </h4>
 
 ## Itens estudados
