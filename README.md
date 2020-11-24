@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 <h4 align="center">
-    <img alt="Forms" title="Forms" src="./public/demonstração.png" width="400px" />
+    <img alt="Forms" title="Forms" src="./public/Demonstração.png" width="400px" />
 </h4>
 
 ## Itens estudados
@@ -11,6 +11,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Usando Material UI
 - Functions Components
 - Hooks { useState }
+- Formatação de string CPF e tratando input com erros
 
 ### `yarn start`
 
