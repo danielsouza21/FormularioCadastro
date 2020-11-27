@@ -2,17 +2,9 @@ import React, { useState } from "react";
 
 import { FormControlLabel, Button, TextField, Switch } from "@material-ui/core";
 
-import "./FormularioCadastro.css";
+import "./DadosPessoais.css";
 
-function Formulario({ AoEnviar, validarCPFField }) {
-  const [Dados, setDados] = useState({
-    Nome: "",
-    Sobrenome: "",
-    CPF: "",
-    Promoções: true,
-    Novidades: true,
-  });
-
+function DadosPessoais({ Dados, setDados, AoEnviar, validarCPFField }) {
   const [Errors, setErrors] = useState({
     cpf: { valido: true, texterror: "" },
   });
@@ -45,6 +37,7 @@ function Formulario({ AoEnviar, validarCPFField }) {
         variant="outlined"
         margin="normal"
         fullWidth
+        required
       ></TextField>
 
       <TextField
@@ -78,6 +71,7 @@ function Formulario({ AoEnviar, validarCPFField }) {
           setErrors({ ...Errors, cpf: validoCPF });
         }}
         fullWidth
+        required
       ></TextField>
 
       <FormControlLabel
@@ -109,10 +103,10 @@ function Formulario({ AoEnviar, validarCPFField }) {
       ></FormControlLabel>
 
       <Button type="submit" variant="contained" color="primary">
-        Cadastrar
+        Próximo
       </Button>
     </form>
   );
 }
 
-export default Formulario;
+export default DadosPessoais;

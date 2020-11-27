@@ -9,9 +9,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Itens estudados
 
 - Usando Material UI
-- Functions Components
-- Hooks { useState }
-- Formatação de string CPF e tratando input com erros
+- Functions Components e injeção de dependências
+- Hooks { useState e useEffect }
+- Formatações especificas de inputs forms
+- Renderização condicional
 
 ### `yarn start`
 
