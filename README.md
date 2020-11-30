@@ -9,10 +9,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Itens estudados
 
 - Usando Material UI
-- Functions Components e injeção de dependências
+- Functions Components
 - Hooks { useState e useEffect }
 - Formatações especificas de inputs forms
 - Renderização condicional
+- Padrão Model Viewer e regras de negócio (validações)
+- Injeção de dependência e Create/Use Contexts + Providers
+- Padronização de projetos usando práticas de SOLID e CleanCode
+- Hooks customizados
 
 ### `yarn start`
 

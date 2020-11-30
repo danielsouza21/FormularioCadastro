@@ -2,63 +2,88 @@ import React, { useState } from "react";
 import DadosEntrega from "../DadosEntrega";
 import DadosPessoais from "../DadosPessoais";
 import DadosUsuarios from "../DadosUsuarios";
+
+import { Typography, Stepper, Step, StepLabel } from "@material-ui/core";
+
 import "./FormularioCadastro.css";
 
-function Formulario() {
+function Formulario({ validacoes }) {
   const [Dados, setDados] = useState({
     Nome: "",
     Sobrenome: "",
     CPF: "",
     Promoções: true,
     Novidades: true,
+    Email: "",
+    Password: "",
+    CEP: "",
+    Endereço: "",
+    Número: "",
+    Cidade: "",
+    Estado: "",
   });
 
   const [etapaAtual, setEtapaAtual] = useState(0);
 
   const formularios = [
-    <DadosPessoais
-      Dados={Dados}
-      setDados={setDados}
-      AoEnviar={NextStep}
-      validarCPFField={validarCPFField}
-    ></DadosPessoais>,
     <DadosUsuarios
       Dados={Dados}
       setDados={setDados}
       AoEnviar={NextStep}
+      validacoes={validacoes}
     ></DadosUsuarios>,
+    <DadosPessoais
+      Dados={Dados}
+      setDados={setDados}
+      AoEnviar={NextStep}
+      validacoes={validacoes}
+    ></DadosPessoais>,
     <DadosEntrega
       Dados={Dados}
       setDados={setDados}
-      AoEnviar={AoFinalizar}
+      AoEnviar={NextStep}
+      validacoes={validacoes}
     ></DadosEntrega>,
+    <Typography variant="h5">Obrigado pelo cadastro</Typography>,
   ];
 
-  function AoFinalizar(Dados) {
-    console.log(Dados);
-    setDados({
-      Nome: "",
-      Sobrenome: "",
-      CPF: "",
-      Promoções: true,
-      Novidades: true,
-    });
-    setEtapaAtual(0);
-  }
-
-  function validarCPFField(cpf) {
-    if (cpf.length !== 14) {
-      return { valido: false, texterror: "CPF deve ter 11 digitos" };
-    } else {
-      return { valido: true, texterror: "" };
-    }
-  }
-
   function NextStep() {
-    setEtapaAtual(etapaAtual + 1);
+    if (etapaAtual === formularios.length - 1) {
+      console.log(Dados);
+      setDados({
+        Nome: "",
+        Sobrenome: "",
+        CPF: "",
+        Promoções: true,
+        Novidades: true,
+      });
+      setEtapaAtual(0);
+    } else {
+      setEtapaAtual(etapaAtual + 1);
+    }
+
+    if (etapaAtual === formularios.length - 2) console.log(Dados);
   }
 
-  return <section>{formularios[etapaAtual]}</section>;
+  return (
+    <section>
+      <Stepper activeStep={etapaAtual}>
+        <Step>
+          <StepLabel>Login</StepLabel>
+        </Step>
+        <Step>
+          <StepLabel>Pessoal</StepLabel>
+        </Step>
+        <Step>
+          <StepLabel>Entrega</StepLabel>
+        </Step>
+        <Step>
+          <StepLabel>Finalização</StepLabel>
+        </Step>
+      </Stepper>
+      {formularios[etapaAtual]}
+    </section>
+  );
 }
 
 export default Formulario;

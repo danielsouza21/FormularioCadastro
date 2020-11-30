@@ -1,14 +1,10 @@
-import React, { useState } from "react";
-
+import { React, useContext } from "react";
 import { FormControlLabel, Button, TextField, Switch } from "@material-ui/core";
-
+import ValidacoesCadastro from "../../contexts/ValidacoesCadastro";
+import useErrors from "../../hooks/useErrors";
 import "./DadosPessoais.css";
 
-function DadosPessoais({ Dados, setDados, AoEnviar, validarCPFField }) {
-  const [Errors, setErrors] = useState({
-    cpf: { valido: true, texterror: "" },
-  });
-
+function DadosPessoais({ Dados, setDados, AoEnviar }) {
   function maskCPF(_CPF) {
     var cpf = _CPF;
 
@@ -20,11 +16,14 @@ function DadosPessoais({ Dados, setDados, AoEnviar, validarCPFField }) {
       .replace(/(-\d{2})\d+?$/, "$1"); // captura 2 numeros seguidos de um traço e não deixa ser digitado mais nada;
   }
 
+  const validacoes = useContext(ValidacoesCadastro);
+  const [Errors, validarCampos, canSend] = useErrors(validacoes);
+
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        AoEnviar(Dados);
+        if (canSend(Errors)) AoEnviar(Dados);
       }}
       className="Form_container"
     >
@@ -58,18 +57,16 @@ function DadosPessoais({ Dados, setDados, AoEnviar, validarCPFField }) {
             CPF: e.target.value,
           });
         }}
+        name="CPF"
         value={maskCPF(Dados.CPF)}
         id="InputCPF"
         label="CPF"
         type="text"
         variant="outlined"
         margin="normal"
-        error={!Errors.cpf.valido}
-        helperText={Errors.cpf.texterror}
-        onBlur={(event) => {
-          var validoCPF = validarCPFField(Dados.CPF);
-          setErrors({ ...Errors, cpf: validoCPF });
-        }}
+        error={!Errors.CPF.valido}
+        helperText={Errors.CPF.texterror}
+        onBlur={validarCampos}
         fullWidth
         required
       ></TextField>
